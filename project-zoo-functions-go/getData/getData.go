@@ -14,7 +14,7 @@ type Employee struct {
 	ResponsibleFor []string `json:"responsibleFor"`
 }
 
-type species struct {
+type Species struct {
 	Species []struct {
 		ID           string   `json:"id"`
 		Name         string   `json:"name"`
@@ -71,15 +71,40 @@ type species struct {
 	} `json:"prices"`
 }
 
-func ReturnStruct() species {
+type Entrant struct {
+	Name string `json:"name"`
+	Age  int    `json:"age"`
+}
+
+type Entrants struct {
+	Entrants []Entrant
+}
+
+func GetZooData() Species {
 	jsonFile, err := os.ReadFile("./data/output.json")
 	if err != nil {
 		fmt.Print(err)
 	}
-	var jsonData species
+	var jsonData Species
 	err = json.Unmarshal(jsonFile, &jsonData)
 	if err != nil {
 		fmt.Print(err)
 	}
 	return jsonData
+}
+
+func GetEntrants() Entrants {
+
+	jsonFile, err := os.ReadFile("./data/entrants.json")
+	if err != nil {
+		fmt.Print(err)
+	}
+	var jsonData Entrants
+	err = json.Unmarshal(jsonFile, &jsonData)
+	if err != nil {
+		fmt.Print(err)
+	}
+
+	return jsonData
+
 }

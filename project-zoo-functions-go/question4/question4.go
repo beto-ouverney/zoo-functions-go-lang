@@ -5,7 +5,7 @@ import (
 )
 
 func GetRelatedEmployees(id string) []string {
-	data := getData.ReturnStruct()
+	data := getData.GetZooData()
 
 	result := make([]string, 0, len(data.Employees))
 

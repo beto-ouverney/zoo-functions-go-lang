@@ -15,7 +15,7 @@ type Employee struct {
 
 func GetEmployeeByName(args []string) []Employee {
 
-	data := getData.ReturnStruct()
+	data := getData.GetZooData()
 	var result = make([]Employee, 0, len(data.Employees))
 	if len(args) == 1 {
 		for _, v := range data.Employees {

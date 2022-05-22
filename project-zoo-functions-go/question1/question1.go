@@ -17,7 +17,7 @@ type specie struct {
 
 func ResultQuestion1(args []string) []specie {
 
-	result := getData.ReturnStruct()
+	result := getData.GetZooData()
 
 	var ids []string
 	ids = append(ids, args...)

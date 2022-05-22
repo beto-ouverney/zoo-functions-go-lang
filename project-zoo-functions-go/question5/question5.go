@@ -8,7 +8,7 @@ type ParamTypeQ5 struct {
 }
 
 func CountAnimals(param ParamTypeQ5) int {
-	data := getData.ReturnStruct()
+	data := getData.GetZooData()
 	result := 0
 	if param.Specie == "" {
 		for _, v := range data.Species {

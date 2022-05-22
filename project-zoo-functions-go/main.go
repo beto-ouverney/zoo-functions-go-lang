@@ -8,6 +8,7 @@ import (
 	"project-zoo-functions-go/question3"
 	"project-zoo-functions-go/question4"
 	"project-zoo-functions-go/question5"
+	"project-zoo-functions-go/question6"
 )
 
 func main() {
@@ -38,6 +39,8 @@ func main() {
 			} else {
 				fmt.Println("No question argument")
 			}
+		case "q6":
+			fmt.Printf("%+v", question6.CalculateEntry())
 		}
 	}
 }

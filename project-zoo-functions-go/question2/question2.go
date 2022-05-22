@@ -11,7 +11,7 @@ func GetAnimalsOlderThan(animal string, ageParam string) bool {
 	if err != nil {
 		fmt.Print(err)
 	}
-	data := getData.ReturnStruct()
+	data := getData.GetZooData()
 	haveOlder := false
 
 	for _, v := range data.Species {
