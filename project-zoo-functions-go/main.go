@@ -5,6 +5,7 @@ import (
 	"os"
 	"project-zoo-functions-go/question1"
 	"project-zoo-functions-go/question2"
+	"project-zoo-functions-go/question3"
 )
 
 func main() {
@@ -19,6 +20,8 @@ func main() {
 			fmt.Printf("%+v\n", question1.ResultQuestion1(args[2:]))
 		case "q2":
 			fmt.Printf("%+v", question2.GetAnimalsOlderThan(args[2], args[3]))
+		case "q3":
+			fmt.Printf("%+v", question3.GetEmployeeByName(args[2:]))
 		}
 
 	}
