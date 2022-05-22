@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-type employee struct {
+type Employee struct {
 	ID             string   `json:"id"`
 	FirstName      string   `json:"firstName"`
 	LastName       string   `json:"lastName"`
@@ -13,10 +13,10 @@ type employee struct {
 	ResponsibleFor []string `json:"responsibleFor"`
 }
 
-func GetEmployeeByName(args []string) []employee {
+func GetEmployeeByName(args []string) []Employee {
 
 	data := getData.ReturnStruct()
-	var result = make([]employee, 0, len(data.Employees))
+	var result = make([]Employee, 0, len(data.Employees))
 	if len(args) == 1 {
 		for _, v := range data.Employees {
 			name := v.FirstName + v.LastName

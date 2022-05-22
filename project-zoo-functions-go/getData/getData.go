@@ -6,6 +6,14 @@ import (
 	"os"
 )
 
+type Employee struct {
+	ID             string   `json:"id"`
+	FirstName      string   `json:"firstName"`
+	LastName       string   `json:"lastName"`
+	Managers       []string `json:"managers"`
+	ResponsibleFor []string `json:"responsibleFor"`
+}
+
 type species struct {
 	Species []struct {
 		ID           string   `json:"id"`
