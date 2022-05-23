@@ -9,6 +9,8 @@ import (
 	"project-zoo-functions-go/question4"
 	"project-zoo-functions-go/question5"
 	"project-zoo-functions-go/question6"
+	"project-zoo-functions-go/question7"
+	"strconv"
 )
 
 func main() {
@@ -41,6 +43,31 @@ func main() {
 			}
 		case "q6":
 			fmt.Printf("%+v", question6.CalculateEntry())
+		case "q7":
+			if len(args) == 5 {
+				options := question7.Options{}
+				options.IncludeNames, _ = strconv.ParseBool(args[2])
+				options.Sex = args[3]
+				options.Sorted, _ = strconv.ParseBool(args[4])
+				fmt.Printf("%+v", question7.GetAnimalMap(options))
+			} else if len(args) == 4 {
+				options := question7.Options{}
+				options.IncludeNames, _ = strconv.ParseBool(args[2])
+				if args[3] == "true" || args[3] == "fslse" {
+					options.Sorted, _ = strconv.ParseBool(args[3])
+				} else {
+					options.Sex = args[3]
+				}
+				fmt.Printf("%+v", question7.GetAnimalMap(options))
+			} else if len(args) == 3 {
+				options := question7.Options{}
+				options.IncludeNames, _ = strconv.ParseBool(args[2])
+				fmt.Printf("%+v", question7.GetAnimalMap(options))
+			} else if len(args) == 2 {
+				fmt.Printf("%v", question7.GetAnimalMap(question7.Options{}))
+			} else {
+				fmt.Println("No question argument")
+			}
 		}
 	}
 }
