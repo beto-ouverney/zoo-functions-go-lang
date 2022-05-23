@@ -13,20 +13,20 @@ type Employee struct {
 	Managers       []string `json:"managers"`
 	ResponsibleFor []string `json:"responsibleFor"`
 }
-
+type Specie struct {
+	ID           string   `json:"id"`
+	Name         string   `json:"name"`
+	Popularity   int      `json:"popularity"`
+	Location     string   `json:"location"`
+	Availability []string `json:"availability"`
+	Residents    []struct {
+		Name string `json:"name"`
+		Sex  string `json:"sex"`
+		Age  int    `json:"age"`
+	} `json:"residents"`
+}
 type Species struct {
-	Species []struct {
-		ID           string   `json:"id"`
-		Name         string   `json:"name"`
-		Popularity   int      `json:"popularity"`
-		Location     string   `json:"location"`
-		Availability []string `json:"availability"`
-		Residents    []struct {
-			Name string `json:"name"`
-			Sex  string `json:"sex"`
-			Age  int    `json:"age"`
-		} `json:"residents"`
-	} `json:"species"`
+	Species   []Specie `json:"species"`
 	Employees []struct {
 		ID             string   `json:"id"`
 		FirstName      string   `json:"firstName"`
