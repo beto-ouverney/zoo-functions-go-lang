@@ -55,7 +55,7 @@ func main() {
 			} else if len(args) == 4 {
 				options := question7.Options{}
 				options.IncludeNames, _ = strconv.ParseBool(args[2])
-				if args[3] == "true" || args[3] == "fslse" {
+				if args[3] == "true" || args[3] == "false" {
 					options.Sorted, _ = strconv.ParseBool(args[3])
 				} else {
 					options.Sex = args[3]
