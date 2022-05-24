@@ -5,6 +5,8 @@ Project Zoo Functions build with Go Lang
 
 This project is dedicated to the learning of Go Lang
 
+All files in project-zoo-functions-go
+
 # Skills used in this project:
 
 * Readable, concise and expressive code
