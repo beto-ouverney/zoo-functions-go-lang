@@ -10,6 +10,7 @@ import (
 	"project-zoo-functions-go/question5"
 	"project-zoo-functions-go/question6"
 	"project-zoo-functions-go/question7"
+	"project-zoo-functions-go/question8"
 	"strconv"
 )
 
@@ -18,7 +19,6 @@ func main() {
 	if len(args) < 2 {
 		fmt.Println("No question argument")
 	} else {
-
 		switch args[1] {
 		case "q1":
 			fmt.Printf("%+v\n", question1.ResultQuestion1(args[2:]))
@@ -67,6 +67,13 @@ func main() {
 				fmt.Printf("%v", question7.GetAnimalMap(question7.Options{}))
 			} else {
 				fmt.Println("No question argument")
+			}
+		case "q8":
+			if len(args) > 2 {
+				fmt.Printf("%v", question8.GetSchedule(args[2]))
+			} else {
+				fmt.Printf("TESE")
+				fmt.Printf("%v", question8.GetSchedule(""))
 			}
 		}
 	}

@@ -25,46 +25,42 @@ type Specie struct {
 		Age  int    `json:"age"`
 	} `json:"residents"`
 }
+
+type Hours struct {
+	Tuesday struct {
+		Open  int `json:"open"`
+		Close int `json:"close"`
+	} `json:"Tuesday"`
+	Wednesday struct {
+		Open  int `json:"open"`
+		Close int `json:"close"`
+	} `json:"Wednesday"`
+	Thursday struct {
+		Open  int `json:"open"`
+		Close int `json:"close"`
+	} `json:"Thursday"`
+	Friday struct {
+		Open  int `json:"open"`
+		Close int `json:"close"`
+	} `json:"Friday"`
+	Saturday struct {
+		Open  int `json:"open"`
+		Close int `json:"close"`
+	} `json:"Saturday"`
+	Sunday struct {
+		Open  int `json:"open"`
+		Close int `json:"close"`
+	} `json:"Sunday"`
+	Monday struct {
+		Open  int `json:"open"`
+		Close int `json:"close"`
+	} `json:"Monday"`
+}
 type Species struct {
-	Species   []Specie `json:"species"`
-	Employees []struct {
-		ID             string   `json:"id"`
-		FirstName      string   `json:"firstName"`
-		LastName       string   `json:"lastName"`
-		Managers       []string `json:"managers"`
-		ResponsibleFor []string `json:"responsibleFor"`
-	} `json:"employees"`
-	Hours struct {
-		Tuesday struct {
-			Open  int `json:"open"`
-			Close int `json:"close"`
-		} `json:"Tuesday"`
-		Wednesday struct {
-			Open  int `json:"open"`
-			Close int `json:"close"`
-		} `json:"Wednesday"`
-		Thursday struct {
-			Open  int `json:"open"`
-			Close int `json:"close"`
-		} `json:"Thursday"`
-		Friday struct {
-			Open  int `json:"open"`
-			Close int `json:"close"`
-		} `json:"Friday"`
-		Saturday struct {
-			Open  int `json:"open"`
-			Close int `json:"close"`
-		} `json:"Saturday"`
-		Sunday struct {
-			Open  int `json:"open"`
-			Close int `json:"close"`
-		} `json:"Sunday"`
-		Monday struct {
-			Open  int `json:"open"`
-			Close int `json:"close"`
-		} `json:"Monday"`
-	} `json:"hours"`
-	Prices struct {
+	Species   []Specie   `json:"species"`
+	Employees []Employee `json:"employees"`
+	Hours     Hours      `json:"hours"`
+	Prices    struct {
 		Adult  float64 `json:"adult"`
 		Senior float64 `json:"senior"`
 		Child  float64 `json:"child"`
