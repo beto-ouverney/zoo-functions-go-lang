@@ -11,6 +11,7 @@ import (
 	"project-zoo-functions-go/question6"
 	"project-zoo-functions-go/question7"
 	"project-zoo-functions-go/question8"
+	"project-zoo-functions-go/question9"
 	"strconv"
 )
 
@@ -71,6 +72,13 @@ func main() {
 		case "q8":
 			if len(args) > 2 {
 				fmt.Printf("%v", question8.GetSchedule(args[2]))
+			} else {
+				fmt.Printf("TESE")
+				fmt.Printf("%v", question8.GetSchedule(""))
+			}
+		case "q9":
+			if len(args) > 2 {
+				fmt.Printf("%v", question9.GetOldestFromFirstSpecies(args[2]))
 			} else {
 				fmt.Printf("TESE")
 				fmt.Printf("%v", question8.GetSchedule(""))

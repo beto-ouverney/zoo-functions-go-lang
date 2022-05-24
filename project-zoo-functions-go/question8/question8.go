@@ -1,7 +1,6 @@
 package question8
 
 import (
-	"fmt"
 	"project-zoo-functions-go/getData"
 	"sort"
 	"strconv"
@@ -15,16 +14,9 @@ type scheduleDay struct {
 func makeExihibition(paramSpecies []getData.Specie, day string) []string {
 	exihibition := make([]string, 0, 10)
 	for _, vS := range paramSpecies {
-		fmt.Printf("\n%v\n", vS.Availability)
 		sort.Strings(vS.Availability)
-		fmt.Printf("\n%v\n", vS.Availability)
-		fmt.Print(day)
 		pos := sort.SearchStrings(vS.Availability, day)
-		fmt.Printf("\n%v\n", day)
-
-		fmt.Printf("\n%v\n", pos)
 		if pos < len(vS.Availability) {
-			fmt.Print(vS.Name)
 			exihibition = append(exihibition, vS.Name)
 		}
 
@@ -84,9 +76,6 @@ func GetSchedule(args string) interface{} {
 	}
 	pos := sort.SearchStrings(dayNames, args)
 	if pos < len(dayNames) {
-		fmt.Print(args)
-		fmt.Print(pos)
-		fmt.Print(dayNames)
 		param := make([]string, 0, 1)
 		param = append(param, args)
 		return maheSchedule(data.Hours, data.Species, param)
