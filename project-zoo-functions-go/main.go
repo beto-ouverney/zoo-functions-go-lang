@@ -23,7 +23,7 @@ func main() {
 	} else {
 		switch args[1] {
 		case "q1":
-			fmt.Printf("%+v\n", question1.ResultQuestion1(args[2:]))
+			fmt.Printf("%+v\n", question1.GetSpeciesByIds(args[2:]))
 		case "q2":
 			fmt.Printf("%+v", question2.GetAnimalsOlderThan(args[2], args[3]))
 		case "q3":

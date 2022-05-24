@@ -2,7 +2,7 @@ package question1
 
 import "project-zoo-functions-go/getData"
 
-func ResultQuestion1(args []string) []getData.Specie {
+func GetSpeciesByIds(args []string) []getData.Specie {
 
 	result := getData.GetZooData()
 
