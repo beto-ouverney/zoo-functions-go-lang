@@ -1,5 +1,4 @@
-# zoo-functions-go-lang
-Project Zoo Functions build with Go Lang
+# Project Zoo Functions build with Go Lang
 
 # About
 
