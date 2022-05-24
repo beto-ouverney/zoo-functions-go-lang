@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"project-zoo-functions-go/question1"
+	"project-zoo-functions-go/question10"
 	"project-zoo-functions-go/question2"
 	"project-zoo-functions-go/question3"
 	"project-zoo-functions-go/question4"
@@ -73,15 +74,19 @@ func main() {
 			if len(args) > 2 {
 				fmt.Printf("%v", question8.GetSchedule(args[2]))
 			} else {
-				fmt.Printf("TESE")
 				fmt.Printf("%v", question8.GetSchedule(""))
 			}
 		case "q9":
 			if len(args) > 2 {
 				fmt.Printf("%v", question9.GetOldestFromFirstSpecies(args[2]))
 			} else {
-				fmt.Printf("TESE")
 				fmt.Printf("%v", question8.GetSchedule(""))
+			}
+		case "q10":
+			if len(args) > 2 {
+				fmt.Printf("%v", question10.GetEmployeesCoverage(args[2]))
+			} else {
+				fmt.Printf("%v", question10.GetEmployeesCoverage(""))
 			}
 		}
 	}
