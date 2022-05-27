@@ -85,6 +85,6 @@ The function searches for information on the oldest animal of the first species 
 
 Function `getEmployeesCoverage`
 
-Esta função será responsável por associar informações de cobertura das pessoas funcionárias.`
+This function will be responsible for associating coverage information of the employees.`
 
 
