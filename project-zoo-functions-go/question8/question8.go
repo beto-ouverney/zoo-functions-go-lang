@@ -1,7 +1,7 @@
 package question8
 
 import (
-	"project-zoo-functions-go/getData"
+	"project-zoo-functions-go/getdata"
 	"sort"
 	"strconv"
 )
@@ -11,7 +11,7 @@ type scheduleDay struct {
 	exihibition []string
 }
 
-func makeExihibition(paramSpecies []getData.Specie, day string) []string {
+func makeExihibition(paramSpecies []getdata.Specie, day string) []string {
 	exihibition := make([]string, 0, 10)
 	for _, vS := range paramSpecies {
 		sort.Strings(vS.Availability)
@@ -24,7 +24,7 @@ func makeExihibition(paramSpecies []getData.Specie, day string) []string {
 	return exihibition
 }
 
-func maheSchedule(hours getData.Hours, paramSpecies []getData.Specie, dayNames []string) map[string]interface{} {
+func maheSchedule(hours getdata.Hours, paramSpecies []getdata.Specie, dayNames []string) map[string]interface{} {
 	schedule := make(map[string]interface{})
 	for _, v := range dayNames {
 		var scheduleDay scheduleDay
@@ -67,10 +67,11 @@ func maheSchedule(hours getData.Hours, paramSpecies []getData.Specie, dayNames [
 	return schedule
 }
 
+//GetSchedule  is responsible for making the time information of the animals available in a query to the user, who may want to have access to the schedule of the week, a day or a specific animal.
 func GetSchedule(args string) interface{} {
 	dayNames := []string{"Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday"}
 	sort.Strings(dayNames)
-	data := getData.GetZooData()
+	data := getdata.GetZooData()
 	if args == "" {
 		return maheSchedule(data.Hours, data.Species, dayNames)
 	}

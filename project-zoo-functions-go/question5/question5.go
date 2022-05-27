@@ -1,14 +1,16 @@
 package question5
 
-import "project-zoo-functions-go/getData"
+import "project-zoo-functions-go/getdata"
 
+//ParamTypeQ5 represents CountAnimals input parameters, with animal specie and animal sex
 type ParamTypeQ5 struct {
 	Specie string
 	Sex    string
 }
 
+//CountAnimals  is responsible for counting the number of animals of each species.
 func CountAnimals(param ParamTypeQ5) int {
-	data := getData.GetZooData()
+	data := getdata.GetZooData()
 	result := 0
 	if param.Specie == "" {
 		for _, v := range data.Species {

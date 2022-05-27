@@ -1,12 +1,8 @@
 package question6
 
-import "project-zoo-functions-go/getData"
+import "project-zoo-functions-go/getdata"
 
-type Entrant struct {
-	Name string `json:"name"`
-	Age  int
-}
-
+//EntrantsType represents zoo type costumers
 type EntrantsType struct {
 	child  int
 	adult  int
@@ -15,7 +11,7 @@ type EntrantsType struct {
 
 func countEntrants() EntrantsType {
 	result := EntrantsType{0, 0, 0}
-	data := getData.GetEntrants()
+	data := getdata.GetEntrants()
 	for _, v := range data.Entrants {
 		if v.Age < 18 {
 			result.child++
@@ -28,9 +24,10 @@ func countEntrants() EntrantsType {
 	return result
 }
 
+//CalculateEntry It should receive the visitors array and return an object with the count according to the following sort criteria: Persons under the age of 18 are classified as children; People aged 18 or over and under 50 are classified as adults; People aged 50 or over are classified as older (senior) people.
 func CalculateEntry() float64 {
 
-	data := getData.GetZooData()
+	data := getdata.GetZooData()
 	result := 0.0
 	entrantsTotal := countEntrants()
 	result += float64(entrantsTotal.child) * data.Prices.Child

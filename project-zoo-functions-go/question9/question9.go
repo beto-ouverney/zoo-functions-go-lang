@@ -1,12 +1,13 @@
 package question9
 
 import (
-	"project-zoo-functions-go/getData"
+	"project-zoo-functions-go/getdata"
 	"strconv"
 )
 
+//GetOldestFromFirstSpecies searches for information on the oldest animal of the first species managed by the person collaborating with the parameter.
 func GetOldestFromFirstSpecies(id string) []string {
-	data := getData.GetZooData()
+	data := getdata.GetZooData()
 	firstSpecie := ""
 	result := []string{}
 	for _, v := range data.Employees {

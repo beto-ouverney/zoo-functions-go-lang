@@ -1,18 +1,19 @@
 package question10
 
 import (
-	"project-zoo-functions-go/getData"
+	"project-zoo-functions-go/getdata"
 	"sort"
 )
 
+//EmployeeCoverage represents coverage information of the employees.
 type EmployeeCoverage struct {
-	Id        string
+	ID        string
 	FullName  string
 	Species   []string
 	Locations []string
 }
 
-func makeEmployeeCoverage(employee getData.Employee, allSpecies []getData.Specie) EmployeeCoverage {
+func makeEmployeeCoverage(employee getdata.Employee, allSpecies []getdata.Specie) EmployeeCoverage {
 	fullName := employee.FirstName + " " + employee.LastName
 	id := employee.ID
 	species := make([]string, 0, 10)
@@ -30,15 +31,16 @@ func makeEmployeeCoverage(employee getData.Employee, allSpecies []getData.Specie
 		}
 	}
 	var employeeCoverage = EmployeeCoverage{}
-	employeeCoverage.Id = id
+	employeeCoverage.ID = id
 	employeeCoverage.FullName = fullName
 	employeeCoverage.Species = species
 	employeeCoverage.Locations = locations
 	return employeeCoverage
 }
 
+//GetEmployeesCoverage This function will be responsible for associating coverage information of the employees.`
 func GetEmployeesCoverage(args string) interface{} {
-	data := getData.GetZooData()
+	data := getdata.GetZooData()
 	var employeeCoverage = EmployeeCoverage{}
 	var result interface{}
 	allEmployeesCoverage := make([]EmployeeCoverage, 0, 20)

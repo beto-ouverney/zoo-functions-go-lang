@@ -1,26 +1,29 @@
 package question7
 
 import (
-	"project-zoo-functions-go/getData"
+	"project-zoo-functions-go/getdata"
 	"sort"
 )
 
-type animalsResult struct {
+//AnimalsResult represents geographic mapping of the species and their animals,
+type AnimalsResult struct {
 	NE []interface{}
 	NW []interface{}
 	SE []interface{}
 	SW []interface{}
 }
 
+//Options represents GetAnimalMap functions input parameters
 type Options struct {
 	IncludeNames bool
 	Sex          string
 	Sorted       bool
 }
 
-func GetAnimalMap(options Options) animalsResult {
-	data := getData.GetZooData()
-	var result animalsResult
+//GetAnimalMap is responsible for the geographic mapping of the species and their animals, and can also filter them by alphabetical order and sex.
+func GetAnimalMap(options Options) AnimalsResult {
+	data := getdata.GetZooData()
+	var result AnimalsResult
 	for _, v := range data.Species {
 		temp := make([]string, 0, 10)
 		temp2 := make(map[string]interface{})

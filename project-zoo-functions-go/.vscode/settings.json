@@ -1,1 +1,5 @@
-{}
+{
+   "go.lintOnSave": true,
+   "go.lintTool": "golint",
+   "go.inferGopath": false,
+}

@@ -1,19 +1,20 @@
 package question1
 
-import "project-zoo-functions-go/getData"
+import "project-zoo-functions-go/getdata"
 
-func GetSpeciesByIds(args []string) []getData.Specie {
+//GetSpeciesByIds is responsible for searching animal species by id
+func GetSpeciesByIds(args []string) []getdata.Specie {
 
-	result := getData.GetZooData()
+	result := getdata.GetZooData()
 
 	var ids []string
 	ids = append(ids, args...)
 
-	var results = make([]getData.Specie, 0, len(result.Species))
+	var results = make([]getdata.Specie, 0, len(result.Species))
 
-	for _, vId := range ids {
+	for _, vID := range ids {
 		for _, vS := range result.Species {
-			if vId == vS.ID {
+			if vID == vS.ID {
 				results = append(results, vS)
 			}
 		}

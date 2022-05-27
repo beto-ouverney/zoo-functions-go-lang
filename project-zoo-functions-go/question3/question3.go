@@ -1,14 +1,15 @@
 package question3
 
 import (
-	"project-zoo-functions-go/getData"
+	"project-zoo-functions-go/getdata"
 	"strings"
 )
 
-func GetEmployeeByName(args []string) []getData.Employee {
+//GetEmployeeByName is responsible for searching for collaborating people by their first or last name
+func GetEmployeeByName(args []string) []getdata.Employee {
 
-	data := getData.GetZooData()
-	var result = make([]getData.Employee, 0, len(data.Employees))
+	data := getdata.GetZooData()
+	var result = make([]getdata.Employee, 0, len(data.Employees))
 	if len(args) == 1 {
 		for _, v := range data.Employees {
 			name := v.FirstName + v.LastName

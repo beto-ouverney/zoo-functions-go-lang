@@ -1,4 +1,4 @@
-package getData
+package getdata
 
 import (
 	"encoding/json"
@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+//Employee represents zoo employee
 type Employee struct {
 	ID             string   `json:"id"`
 	FirstName      string   `json:"firstName"`
@@ -13,6 +14,8 @@ type Employee struct {
 	Managers       []string `json:"managers"`
 	ResponsibleFor []string `json:"responsibleFor"`
 }
+
+//Specie represents a animal specie with your data
 type Specie struct {
 	ID           string   `json:"id"`
 	Name         string   `json:"name"`
@@ -26,6 +29,7 @@ type Specie struct {
 	} `json:"residents"`
 }
 
+//Hours represents opener and closer hours of the zoo
 type Hours struct {
 	Tuesday struct {
 		Open  int `json:"open"`
@@ -56,6 +60,8 @@ type Hours struct {
 		Close int `json:"close"`
 	} `json:"Monday"`
 }
+
+//Species represents the response from a mock ZooDATA
 type Species struct {
 	Species   []Specie   `json:"species"`
 	Employees []Employee `json:"employees"`
@@ -67,15 +73,18 @@ type Species struct {
 	} `json:"prices"`
 }
 
+//Entrant represent a costumer in the Zoo
 type Entrant struct {
 	Name string `json:"name"`
 	Age  int    `json:"age"`
 }
 
+//Entrants represents a list of costumers in the zoo
 type Entrants struct {
 	Entrants []Entrant
 }
 
+//GetZooData is the function get all zoo data
 func GetZooData() Species {
 	jsonFile, err := os.ReadFile("./data/output.json")
 	if err != nil {
@@ -89,6 +98,7 @@ func GetZooData() Species {
 	return jsonData
 }
 
+//GetEntrants get all zoo costumers
 func GetEntrants() Entrants {
 
 	jsonFile, err := os.ReadFile("./data/entrants.json")
