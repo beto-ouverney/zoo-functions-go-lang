@@ -45,7 +45,7 @@ Function `getRelatedEmployees`
 
 - if it is a manager collaborating person, it must return an array containing the names of the collaborating people it is responsible for;
 
-- se não for uma pessoa colaboradora gerente, deverá ser lançado um erro gerado com a função construtora Error da biblioteca padrão do JavaScript com a mensagem "O id inserido não é de uma pessoa colaboradora gerente!".
+- if not a manager contributor, return the message "The id entered is not a manager contributor person!"
 
 # Question 5
 
