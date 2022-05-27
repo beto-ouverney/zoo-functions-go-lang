@@ -15,18 +15,21 @@ type Employee struct {
 	ResponsibleFor []string `json:"responsibleFor"`
 }
 
+//Resident represents zoo resident
+type Resident struct {
+	Name string `json:"name"`
+	Sex  string `json:"sex"`
+	Age  int    `json:"age"`
+}
+
 //Specie represents a animal specie with your data
 type Specie struct {
-	ID           string   `json:"id"`
-	Name         string   `json:"name"`
-	Popularity   int      `json:"popularity"`
-	Location     string   `json:"location"`
-	Availability []string `json:"availability"`
-	Residents    []struct {
-		Name string `json:"name"`
-		Sex  string `json:"sex"`
-		Age  int    `json:"age"`
-	} `json:"residents"`
+	ID           string     `json:"id"`
+	Name         string     `json:"name"`
+	Popularity   int        `json:"popularity"`
+	Location     string     `json:"location"`
+	Availability []string   `json:"availability"`
+	Residents    []Resident `json:"residents"`
 }
 
 //Hours represents opener and closer hours of the zoo
@@ -108,7 +111,7 @@ func GetEntrants() Entrants {
 	var jsonData Entrants
 	err = json.Unmarshal(jsonFile, &jsonData)
 	if err != nil {
-		fmt.Print(err)
+		fmt.Println(err)
 	}
 
 	return jsonData
