@@ -5,7 +5,7 @@ import (
 )
 
 //GetRelatedEmployees if it is a manager collaborating person, it must return an array containing the names of the collaborating people it is responsible for. if not a manager contributor, return the message "The id entered is not a manager contributor person!"
-func GetRelatedEmployees(id string) []string {
+func GetRelatedEmployees(id string) interface{} {
 	data := getdata.GetZooData()
 
 	result := make([]string, 0, len(data.Employees))
@@ -20,7 +20,7 @@ func GetRelatedEmployees(id string) []string {
 	}
 
 	if len(result) == 0 {
-		result = append(result, "O id inserido não é de uma pessoa colaboradora gerente!")
+		result = append(result, "The id entered is not that of a collaborating person manager!")
 	}
 	return result
 }

@@ -47,7 +47,7 @@ func GetEmployeesCoverage(args string) interface{} {
 	for _, v := range data.Employees {
 		employeeCoverage = makeEmployeeCoverage(v, data.Species)
 		if args == "" {
-			allEmployeesCoverage = append(allEmployeesCoverage, employeeCoverage)
+			result = "Invalid information"
 		} else {
 			if args == v.ID || args == v.FirstName || args == v.LastName {
 				allEmployeesCoverage = append(allEmployeesCoverage, employeeCoverage)
