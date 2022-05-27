@@ -25,7 +25,11 @@ func main() {
 		case "q1":
 			fmt.Printf("%+v\n", question1.GetSpeciesByIds(args[2:]))
 		case "q2":
-			fmt.Printf("%+v", question2.GetAnimalsOlderThan(args[2], args[3]))
+			intVar, err := strconv.Atoi(args[3])
+			if err != nil {
+				fmt.Print(err)
+			}
+			fmt.Printf("%+v", question2.GetAnimalsOlderThan(args[2], intVar))
 		case "q3":
 			fmt.Printf("%+v", question3.GetEmployeeByName(args[2:]))
 		case "q4":

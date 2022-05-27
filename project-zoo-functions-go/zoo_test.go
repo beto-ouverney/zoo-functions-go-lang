@@ -3,6 +3,7 @@ package main
 import (
 	"project-zoo-functions-go/getdata"
 	"project-zoo-functions-go/question1"
+	"project-zoo-functions-go/question2"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -76,5 +77,12 @@ func TestGetSpeciesByIds(t *testing.T) {
 			assert.Equal(t, actual, v.answer)
 		}
 	}
+}
 
+func TestGetAnimalsOlderThan(t *testing.T) {
+	actual := question2.GetAnimalsOlderThan("lions", 10)
+	assert.Equal(t, actual, true)
+
+	actual = question2.GetAnimalsOlderThan("penguins", 10)
+	assert.Equal(t, actual, true)
 }
