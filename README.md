@@ -45,6 +45,8 @@ Function `getRelatedEmployees`
 
 - if it is a manager collaborating person, it must return an array containing the names of the collaborating people it is responsible for;
 
+Output Example: [ 'Burl Bethea', 'Ola Orloff', 'Emery Elser' ];
+
 - if not a manager contributor, return the message "The id entered is not a manager contributor person!"
 
 # Question 5
@@ -86,5 +88,40 @@ The function searches for information on the oldest animal of the first species 
 Function `getEmployeesCoverage`
 
 This function will be responsible for associating coverage information of the employees.`
+
+Output example: 
+{
+  "id": "4b40a139-d4dc-4f09-822d-ec25e819a5ad",
+  "fullName": "Sharonda Spry",
+  "species": [ "otters", "frogs" ],
+  "locations": [ "SE", "SW" ]
+}
+
+When being called with no arguments, it should return an array with the coverage of all the employees:
+
+[
+  {
+    "id": "c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1",
+    "fullName": "Nigel Nelson",
+    "species": [ "lions", "tigers" ],
+    "locations": [ "NE", "NW" ],
+  },
+  {
+    "id": "0e7b460e-acf4-4e17-bcb3-ee472265db83",
+    "fullName": "Burl Bethea",
+    "species": [ "lions", "tigers", "bears", "penguins" ],
+    "locations": [ "NE", "NW", "NW", "SE" ],
+  },
+  {
+    "id": "fdb2543b-5662-46a7-badc-93d960fdc0a8",
+    "fullName": "Ola Orloff",
+    "species": [ "otters", "frogs", "snakes", "elephants" ],
+    "locations": [ "SE", "SW", "SW", "NW" ],
+  },
+  //[...]
+];
+
+If no person is found with the first name, last name or id, the message 'Invalid information' should be displayed
+
 
 
