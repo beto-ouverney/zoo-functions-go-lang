@@ -1,9 +1,10 @@
-# zoo-functions-go-lang
-Project Zoo Functions build with Go Lang
+# Project Zoo Functions build with Go Lang
 
 # About
 
 This project is dedicated to the learning of Go Lang
+
+All files in project-zoo-functions-go
 
 # Skills used in this project:
 
@@ -44,7 +45,7 @@ Function `getRelatedEmployees`
 
 - if it is a manager collaborating person, it must return an array containing the names of the collaborating people it is responsible for;
 
-- se não for uma pessoa colaboradora gerente, deverá ser lançado um erro gerado com a função construtora Error da biblioteca padrão do JavaScript com a mensagem "O id inserido não é de uma pessoa colaboradora gerente!".
+- if not a manager contributor, return the message "The id entered is not a manager contributor person!"
 
 # Question 5
 
@@ -84,6 +85,6 @@ The function searches for information on the oldest animal of the first species 
 
 Function `getEmployeesCoverage`
 
-Esta função será responsável por associar informações de cobertura das pessoas funcionárias.`
+This function will be responsible for associating coverage information of the employees.`
 
 
