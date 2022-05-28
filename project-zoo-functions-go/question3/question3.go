@@ -6,17 +6,18 @@ import (
 )
 
 //GetEmployeeByName is responsible for searching for collaborating people by their first or last name
-func GetEmployeeByName(args []string) []getdata.Employee {
-
+func GetEmployeeByName(args string) getdata.Employee {
 	data := getdata.GetZooData()
-	var result = make([]getdata.Employee, 0, len(data.Employees))
-	if len(args) == 1 {
-		for _, v := range data.Employees {
-			name := v.FirstName + v.LastName
-			if strings.Contains(strings.ToLower(name), strings.ToLower(args[0])) {
-				result = append(result, v)
-			}
+	result := getdata.Employee{}
+	if args == "" {
+		return result
+	}
+	for _, v := range data.Employees {
+		name := v.FirstName + v.LastName
+		if strings.Contains(strings.ToLower(name), strings.ToLower(args)) {
+			result = v
 		}
 	}
+
 	return result
 }

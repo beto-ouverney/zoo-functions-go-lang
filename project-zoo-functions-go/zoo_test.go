@@ -4,13 +4,14 @@ import (
 	"project-zoo-functions-go/getdata"
 	"project-zoo-functions-go/question1"
 	"project-zoo-functions-go/question2"
+	"project-zoo-functions-go/question3"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetSpeciesByIds(t *testing.T) {
-
+func TestGetSpeciesByIDs(t *testing.T) {
+	t.Log("Testing Question 1!")
 	type test struct {
 		data   []string
 		answer []getdata.Specie
@@ -80,9 +81,63 @@ func TestGetSpeciesByIds(t *testing.T) {
 }
 
 func TestGetAnimalsOlderThan(t *testing.T) {
+	t.Log("Testing Question 2!")
 	actual := question2.GetAnimalsOlderThan("lions", 10)
 	assert.Equal(t, actual, true)
 
 	actual = question2.GetAnimalsOlderThan("penguins", 10)
 	assert.Equal(t, actual, true)
+}
+
+func TestGetEmployeeByName(t *testing.T) {
+	t.Log("Testing Question 3!")
+	lionID := "0938aa23-f153-4937-9f88-4858b24d6bce"
+	elephantsID := "bb2a76d8-5fe3-4d03-84b7-dba9cfc048b5"
+	bearsID := "baa6e93a-f295-44e7-8f70-2bcdc6f6948d"
+	snakesID := "78460a91-f4da-4dea-a469-86fd2b8ccc84"
+
+	actual := question3.GetEmployeeByName("")
+	assert.Equal(t, actual, getdata.Employee{})
+
+	test := []struct {
+		data   string
+		answer getdata.Employee
+	}{
+		{
+			data: "Emery",
+			answer: getdata.Employee{
+				ID:        "b0dc644a-5335-489b-8a2c-4e086c7819a2",
+				FirstName: "Emery",
+				LastName:  "Elser",
+				Managers:  []string{"9e7d4524-363c-416a-8759-8aa7e50c0992"},
+				ResponsibleFor: []string{
+					lionID,
+					bearsID,
+					elephantsID,
+				},
+			},
+		},
+		{
+			data: "Wishart",
+			answer: getdata.Employee{
+				ID:        "56d43ba3-a5a7-40f6-8dd7-cbb05082383f",
+				FirstName: "Wilburn",
+				LastName:  "Wishart",
+				Managers: []string{
+					"0e7b460e-acf4-4e17-bcb3-ee472265db83",
+					"fdb2543b-5662-46a7-badc-93d960fdc0a8",
+				},
+				ResponsibleFor: []string{
+					snakesID,
+					elephantsID,
+				},
+			},
+		},
+	}
+
+	for _, v := range test {
+		actual := question3.GetEmployeeByName(v.data)
+		t.Log(actual, v.answer)
+		assert.Equal(t, actual, v.answer)
+	}
 }

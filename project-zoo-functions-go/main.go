@@ -31,7 +31,7 @@ func main() {
 			}
 			fmt.Printf("%+v", question2.GetAnimalsOlderThan(args[2], intVar))
 		case "q3":
-			fmt.Printf("%+v", question3.GetEmployeeByName(args[2:]))
+			fmt.Printf("%+v", question3.GetEmployeeByName(args[2]))
 		case "q4":
 			fmt.Printf("%+v", question4.GetRelatedEmployees(args[2]))
 		case "q5":
