@@ -20,7 +20,7 @@ func GetRelatedEmployees(id string) interface{} {
 	}
 
 	if len(result) == 0 {
-		result = append(result, "The id entered is not that of a collaborating person manager!")
+		return "The id entered is not that of a collaborating person manager!"
 	}
 	return result
 }

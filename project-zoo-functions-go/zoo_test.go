@@ -5,6 +5,7 @@ import (
 	"project-zoo-functions-go/question1"
 	"project-zoo-functions-go/question2"
 	"project-zoo-functions-go/question3"
+	"project-zoo-functions-go/question4"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -140,4 +141,15 @@ func TestGetEmployeeByName(t *testing.T) {
 		t.Log(actual, v.answer)
 		assert.Equal(t, actual, v.answer)
 	}
+}
+
+func TestGetRelatedEmployees(t *testing.T) {
+	t.Log("Testing Question 4!")
+	const stephanieID = "9e7d4524-363c-416a-8759-8aa7e50c0992"
+
+	actual := question4.GetRelatedEmployees("4b40a139-d4dc-4f09-822d-ec25e819a5ad")
+	assert.Equal(t, actual, "The id entered is not that of a collaborating person manager!")
+
+	actual = question4.GetRelatedEmployees(stephanieID)
+	assert.Equal(t, actual, []string{"Burl Bethea", "Ola Orloff", "Emery Elser"})
 }
