@@ -44,6 +44,9 @@ func main() {
 				param := question5.ParamTypeQ5{
 					Specie: args[2]}
 				fmt.Printf("%+v", question5.CountAnimals(param))
+			} else if len(args) == 2 {
+				param := question5.ParamTypeQ5{}
+				fmt.Printf("%+v", question5.CountAnimals(param))
 			} else {
 				fmt.Println("No question argument")
 			}

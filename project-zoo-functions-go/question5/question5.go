@@ -30,7 +30,7 @@ func CountAnimals(param ParamTypeQ5) int {
 		for _, v := range data.Species {
 			if v.Name == param.Specie {
 				for _, vResidents := range v.Residents {
-					if vResidents.Sex == param.Specie && vResidents.Sex == param.Sex {
+					if vResidents.Sex == param.Sex {
 						result++
 					}
 				}

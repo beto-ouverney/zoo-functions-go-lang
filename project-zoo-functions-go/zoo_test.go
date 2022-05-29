@@ -6,6 +6,7 @@ import (
 	"project-zoo-functions-go/question2"
 	"project-zoo-functions-go/question3"
 	"project-zoo-functions-go/question4"
+	"project-zoo-functions-go/question5"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -152,4 +153,29 @@ func TestGetRelatedEmployees(t *testing.T) {
 
 	actual = question4.GetRelatedEmployees(stephanieID)
 	assert.Equal(t, actual, []string{"Burl Bethea", "Ola Orloff", "Emery Elser"})
+}
+
+func TestCountAnimals(t *testing.T) {
+	t.Log("Testing Question 5!")
+	param := question5.ParamTypeQ5{}
+	actual := question5.CountAnimals(param)
+	assert.Equal(t, actual, 31)
+
+	test := struct {
+		data   []question5.ParamTypeQ5
+		answer []int
+	}{
+		data: []question5.ParamTypeQ5{
+			{Specie: "penguins", Sex: ""},
+			{Specie: "giraffes", Sex: ""},
+			{Specie: "bears", Sex: "female"},
+			{Specie: "elephants", Sex: "male"},
+		},
+		answer: []int{4, 6, 0, 2},
+	}
+
+	for i := 0; i < len(test.data); i++ {
+		actual := question5.CountAnimals(test.data[i])
+		assert.Equal(t, actual, test.answer[i])
+	}
 }
