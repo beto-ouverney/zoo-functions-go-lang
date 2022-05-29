@@ -7,6 +7,7 @@ import (
 	"project-zoo-functions-go/question3"
 	"project-zoo-functions-go/question4"
 	"project-zoo-functions-go/question5"
+	"project-zoo-functions-go/question6"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -178,4 +179,37 @@ func TestCountAnimals(t *testing.T) {
 		actual := question5.CountAnimals(test.data[i])
 		assert.Equal(t, actual, test.answer[i])
 	}
+}
+
+func TestCalculateEntry(t *testing.T) {
+	t.Log("Testing Question 6!")
+	data := getdata.GetEntrants()
+
+	actual := question6.CountEntrants(data.Entrants)
+	expected := question6.EntrantsType{Adult: 2, Child: 3, Senior: 1}
+	assert.Equal(t, actual, expected)
+
+	emptyData := []getdata.Entrant{}
+	actual2 := question6.CalculateEntry(emptyData)
+	assert.Equal(t, actual2, 0.0)
+
+	actual3 := question6.CalculateEntry(data.Entrants)
+	assert.Equal(t, actual3, 187.94)
+
+	newTestData := []getdata.Entrant{data.Entrants[3]}
+	actual3 = question6.CalculateEntry(newTestData)
+	assert.Equal(t, actual3, 49.99)
+
+	newTestData = []getdata.Entrant{data.Entrants[5]}
+	actual3 = question6.CalculateEntry(newTestData)
+	assert.Equal(t, actual3, 24.99)
+
+	newTestData = []getdata.Entrant{data.Entrants[0]}
+	actual3 = question6.CalculateEntry(newTestData)
+	assert.Equal(t, actual3, 20.99)
+
+	newTestData = []getdata.Entrant{data.Entrants[0], data.Entrants[5]}
+	actual3 = question6.CalculateEntry(newTestData)
+	assert.Equal(t, actual3, 45.98)
+
 }

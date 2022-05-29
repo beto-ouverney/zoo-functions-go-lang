@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"project-zoo-functions-go/getdata"
 	"project-zoo-functions-go/question1"
 	"project-zoo-functions-go/question10"
 	"project-zoo-functions-go/question2"
@@ -51,7 +52,8 @@ func main() {
 				fmt.Println("No question argument")
 			}
 		case "q6":
-			fmt.Printf("%+v", question6.CalculateEntry())
+			data := getdata.GetEntrants()
+			fmt.Printf("%+v", question6.CalculateEntry(data.Entrants))
 		case "q7":
 			if len(args) == 5 {
 				options := question7.Options{}
