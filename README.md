@@ -4,7 +4,9 @@
 
 This project is dedicated to the learning of Go Lang
 
-All files in project-zoo-functions-go
+All files with solutions in project-zoo-functions-go
+
+To practice use all files in  project-zoo-functions-go-tests
 
 # Skills used in this project:
 
@@ -20,6 +22,14 @@ All files in project-zoo-functions-go
 # The Project
 
 This project is divided into questions
+
+#Instructions
+
+Don't change the name of the functions.
+Don't change functions input parameters.
+Put in getdata package functions to get the data in output.json and entrants.json
+
+- To execute the tests use go test -v in terminal
 
 # Question 1
 
