@@ -8,6 +8,7 @@ import (
 	"project-zoo-functions-go/question4"
 	"project-zoo-functions-go/question5"
 	"project-zoo-functions-go/question6"
+	"project-zoo-functions-go/question7"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -185,10 +186,12 @@ func TestCalculateEntry(t *testing.T) {
 	t.Log("Testing Question 6!")
 	data := getdata.GetEntrants()
 
+	t.Log("Testing Question 6 - Function CountEntrants !")
 	actual := question6.CountEntrants(data.Entrants)
 	expected := question6.EntrantsType{Adult: 2, Child: 3, Senior: 1}
 	assert.Equal(t, actual, expected)
 
+	t.Log("Testing Question 6 - Function CalculateEntry")
 	emptyData := []getdata.Entrant{}
 	actual2 := question6.CalculateEntry(emptyData)
 	assert.Equal(t, actual2, 0.0)
@@ -211,5 +214,119 @@ func TestCalculateEntry(t *testing.T) {
 	newTestData = []getdata.Entrant{data.Entrants[0], data.Entrants[5]}
 	actual3 = question6.CalculateEntry(newTestData)
 	assert.Equal(t, actual3, 45.98)
+
+}
+
+func TestGetAnimalMap(t *testing.T) {
+	t.Log("Testing Question 7!")
+	expected := question7.AnimalsResult{
+		NE: []interface{}{"lions", "giraffes"},
+		NW: []interface{}{"tigers", "bears", "elephants"},
+		SE: []interface{}{"penguins", "otters"},
+		SW: []interface{}{"frogs", "snakes"},
+	}
+
+	input := question7.Options{}
+	actual := question7.GetAnimalMap(input)
+	assert.Equal(t, actual, expected)
+	input = question7.Options{Sex: "female"}
+	actual = question7.GetAnimalMap(input)
+	assert.Equal(t, actual, expected)
+
+	input = question7.Options{Sex: "female", Sorted: true}
+	actual = question7.GetAnimalMap(input)
+	assert.Equal(t, actual, expected)
+
+	expected2 := question7.AnimalsResult{
+		NE: []interface{}{
+			map[string]interface{}{"lions": []string{"Zena", "Maxwell", "Faustino", "Dee"}},
+			map[string]interface{}{"giraffes": []string{"Gracia", "Antone", "Vicky", "Clay", "Arron", "Bernard"}},
+		},
+		NW: []interface{}{
+			map[string]interface{}{"tigers": []string{"Shu", "Esther"}},
+			map[string]interface{}{"bears": []string{"Hiram", "Edwardo", "Milan"}},
+			map[string]interface{}{"elephants": []string{"Ilana", "Orval", "Bea", "Jefferson"}},
+		},
+		SE: []interface{}{
+			map[string]interface{}{"penguins": []string{"Joe", "Tad", "Keri", "Nicholas"}},
+			map[string]interface{}{"otters": []string{"Neville", "Lloyd", "Mercedes", "Margherita"}},
+		},
+		SW: []interface{}{
+			map[string]interface{}{"frogs": []string{"Cathey", "Annice"}},
+			map[string]interface{}{"snakes": []string{"Paulette", "Bill"}},
+		},
+	}
+	input = question7.Options{IncludeNames: true}
+	actual = question7.GetAnimalMap(input)
+	assert.Equal(t, actual, expected2)
+
+	expected2 = question7.AnimalsResult{
+		NE: []interface{}{
+			map[string]interface{}{"lions": []string{"Dee", "Faustino", "Maxwell", "Zena"}},
+			map[string]interface{}{"giraffes": []string{"Antone", "Arron", "Bernard", "Clay", "Gracia", "Vicky"}},
+		},
+		NW: []interface{}{
+			map[string]interface{}{"tigers": []string{"Esther", "Shu"}},
+			map[string]interface{}{"bears": []string{"Edwardo", "Hiram", "Milan"}},
+			map[string]interface{}{"elephants": []string{"Bea", "Ilana", "Jefferson", "Orval"}},
+		},
+		SE: []interface{}{
+			map[string]interface{}{"penguins": []string{"Joe", "Keri", "Nicholas", "Tad"}},
+			map[string]interface{}{"otters": []string{"Lloyd", "Margherita", "Mercedes", "Neville"}},
+		},
+		SW: []interface{}{
+			map[string]interface{}{"frogs": []string{"Annice", "Cathey"}},
+			map[string]interface{}{"snakes": []string{"Bill", "Paulette"}},
+		},
+	}
+	input = question7.Options{IncludeNames: true, Sorted: true}
+	actual = question7.GetAnimalMap(input)
+	assert.Equal(t, actual, expected2)
+
+	expected2 = question7.AnimalsResult{
+		NE: []interface{}{
+			map[string]interface{}{"lions": []string{"Zena", "Dee"}},
+			map[string]interface{}{"giraffes": []string{"Gracia", "Vicky"}},
+		},
+		NW: []interface{}{
+			map[string]interface{}{"tigers": []string{"Shu", "Esther"}},
+			map[string]interface{}{"bears": []string{}},
+			map[string]interface{}{"elephants": []string{"Ilana", "Bea"}},
+		},
+		SE: []interface{}{
+			map[string]interface{}{"penguins": []string{"Keri"}},
+			map[string]interface{}{"otters": []string{"Mercedes", "Margherita"}},
+		},
+		SW: []interface{}{
+			map[string]interface{}{"frogs": []string{"Cathey", "Annice"}},
+			map[string]interface{}{"snakes": []string{"Paulette"}},
+		},
+	}
+	input = question7.Options{IncludeNames: true, Sex: "female"}
+	actual = question7.GetAnimalMap(input)
+	assert.Equal(t, actual, expected2)
+
+	expected2 = question7.AnimalsResult{
+		NE: []interface{}{
+			map[string]interface{}{"lions": []string{"Dee", "Zena"}},
+			map[string]interface{}{"giraffes": []string{"Gracia", "Vicky"}},
+		},
+		NW: []interface{}{
+			map[string]interface{}{"tigers": []string{"Esther", "Shu"}},
+			map[string]interface{}{"bears": []string{}},
+			map[string]interface{}{"elephants": []string{"Bea", "Ilana"}},
+		},
+		SE: []interface{}{
+			map[string]interface{}{"penguins": []string{"Keri"}},
+			map[string]interface{}{"otters": []string{"Margherita", "Mercedes"}},
+		},
+		SW: []interface{}{
+			map[string]interface{}{"frogs": []string{"Annice", "Cathey"}},
+			map[string]interface{}{"snakes": []string{"Paulette"}},
+		},
+	}
+	input = question7.Options{IncludeNames: true, Sex: "female", Sorted: true}
+	actual = question7.GetAnimalMap(input)
+	assert.Equal(t, actual, expected2)
 
 }
