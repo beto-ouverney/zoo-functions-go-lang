@@ -335,7 +335,7 @@ func TestGetAnimalMap(t *testing.T) {
 }
 
 func TestGetSchedule(t *testing.T) {
-
+	t.Log("Testing Question 8!")
 	monday := struct {
 		OfficeHour  string
 		Exihibition string
@@ -418,6 +418,7 @@ func TestGetSchedule(t *testing.T) {
 }
 
 func TestGetOldestFromFirstSpecies(t *testing.T) {
+	t.Log("Testing Question 9!")
 	test := struct {
 		data   []string
 		answer []question9.Response
@@ -449,6 +450,7 @@ func TestGetOldestFromFirstSpecies(t *testing.T) {
 	}
 }
 func TestGetEmployeesCoverage(t *testing.T) {
+	t.Log("Testing Question 10!")
 	expected := []question10.EmployeeCoverage{
 		{
 			ID:        "c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1",
