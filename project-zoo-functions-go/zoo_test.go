@@ -9,6 +9,7 @@ import (
 	"project-zoo-functions-go/question5"
 	"project-zoo-functions-go/question6"
 	"project-zoo-functions-go/question7"
+	"project-zoo-functions-go/question9"
 
 	"project-zoo-functions-go/question8"
 	"testing"
@@ -413,4 +414,36 @@ func TestGetSchedule(t *testing.T) {
 	actual = question8.GetSchedule("penguins")
 	assert.Equal(t, actual, expected2)
 
+}
+
+func TestGetOldestFromFirstSpecies(t *testing.T) {
+	test := struct {
+		data   []string
+		answer []question9.Response
+	}{
+		data: []string{
+			"c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1",
+			"0e7b460e-acf4-4e17-bcb3-ee472265db83",
+			"fdb2543b-5662-46a7-badc-93d960fdc0a8",
+			"56d43ba3-a5a7-40f6-8dd7-cbb05082383f",
+			"9e7d4524-363c-416a-8759-8aa7e50c0992",
+			"4b40a139-d4dc-4f09-822d-ec25e819a5ad",
+			"c1f50212-35a6-4ecd-8223-f835538526c2",
+			"b0dc644a-5335-489b-8a2c-4e086c7819a2",
+		},
+		answer: []question9.Response{
+			{Name: "Maxwell", Sex: "male", Age: 15},
+			{Name: "Maxwell", Sex: "male", Age: 15},
+			{Name: "Margherita", Sex: "female", Age: 10},
+			{Name: "Bill", Sex: "male", Age: 6},
+			{Name: "Margherita", Sex: "female", Age: 10},
+			{Name: "Margherita", Sex: "female", Age: 10},
+			{Name: "Shu", Sex: "female", Age: 19},
+			{Name: "Maxwell", Sex: "male", Age: 15},
+		},
+	}
+	for i := 0; i < len(test.data); i++ {
+		actual := question9.GetOldestFromFirstSpecies(test.data[i])
+		assert.Equal(t, actual, test.answer[i])
+	}
 }

@@ -2,14 +2,20 @@ package question9
 
 import (
 	"project-zoo-functions-go/getdata"
-	"strconv"
 )
 
+//Response represents the response os the function GetOldestFromFierstSpecies
+type Response struct {
+	Name string
+	Sex  string
+	Age  int
+}
+
 //GetOldestFromFirstSpecies searches for information on the oldest animal of the first species managed by the person collaborating with the parameter.
-func GetOldestFromFirstSpecies(id string) []string {
+func GetOldestFromFirstSpecies(id string) Response {
 	data := getdata.GetZooData()
 	firstSpecie := ""
-	result := []string{}
+	result := Response{}
 	for _, v := range data.Employees {
 		if v.ID == id {
 			firstSpecie = v.ResponsibleFor[0]
@@ -24,8 +30,7 @@ func GetOldestFromFirstSpecies(id string) []string {
 					residents[0] = residents[i]
 				}
 			}
-			result = []string{residents[0].Name, residents[0].Sex, strconv.Itoa(residents[0].Age)}
-			break
+			return Response{residents[0].Name, residents[0].Sex, residents[0].Age}
 		}
 	}
 	return result
