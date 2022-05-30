@@ -9,6 +9,8 @@ import (
 	"project-zoo-functions-go/question5"
 	"project-zoo-functions-go/question6"
 	"project-zoo-functions-go/question7"
+
+	"project-zoo-functions-go/question8"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -327,6 +329,88 @@ func TestGetAnimalMap(t *testing.T) {
 	}
 	input = question7.Options{IncludeNames: true, Sex: "female", Sorted: true}
 	actual = question7.GetAnimalMap(input)
+	assert.Equal(t, actual, expected2)
+}
+
+func TestGetSchedule(t *testing.T) {
+
+	monday := struct {
+		OfficeHour  string
+		Exihibition string
+	}{
+		OfficeHour:  "CLOSED",
+		Exihibition: "The zoo will be closed!",
+	}
+	expected := map[string]interface{}{
+		"Tuesday": question8.ScheduleDay{
+			OfficeHour:  "Open from 8am until 6pm",
+			Exihibition: []string{"lions", "tigers", "bears", "penguins", "elephants", "giraffes"},
+		},
+		"Wednesday": question8.ScheduleDay{
+			OfficeHour:  "Open from 8am until 6pm",
+			Exihibition: []string{"tigers", "bears", "penguins", "otters", "frogs", "giraffes"},
+		},
+		"Thursday": question8.ScheduleDay{
+			OfficeHour:  "Open from 10am until 8pm",
+			Exihibition: []string{"lions", "otters", "frogs", "snakes", "giraffes"},
+		},
+		"Friday": question8.ScheduleDay{
+			OfficeHour:  "Open from 10am until 8pm",
+			Exihibition: []string{"tigers", "otters", "frogs", "snakes", "elephants", "giraffes"},
+		},
+		"Saturday": question8.ScheduleDay{
+			OfficeHour: "Open from 8am until 10pm",
+			Exihibition: []string{
+				"lions", "tigers",
+				"bears", "penguins",
+				"otters", "frogs",
+				"snakes", "elephants",
+			},
+		},
+		"Sunday": question8.ScheduleDay{
+			OfficeHour:  "Open from 8am until 8pm",
+			Exihibition: []string{"lions", "bears", "penguins", "snakes", "elephants"},
+		},
+		"Monday": monday,
+	}
+	actual := question8.GetSchedule("")
+	assert.Equal(t, actual, expected)
+
+	actual = question8.GetSchedule("adjkdjakjdkajkankc")
+	assert.Equal(t, actual, expected)
+
+	expected = map[string]interface{}{
+		"Monday": monday,
+	}
+	actual = question8.GetSchedule("Monday")
+	assert.Equal(t, actual, expected)
+
+	expected = map[string]interface{}{
+		"Tuesday": question8.ScheduleDay{
+			OfficeHour:  "Open from 8am until 6pm",
+			Exihibition: []string{"lions", "tigers", "bears", "penguins", "elephants", "giraffes"},
+		},
+	}
+
+	actual = question8.GetSchedule("Tuesday")
+	assert.Equal(t, actual, expected)
+
+	expected = map[string]interface{}{
+		"Wednesday": question8.ScheduleDay{
+			OfficeHour:  "Open from 8am until 6pm",
+			Exihibition: []string{"tigers", "bears", "penguins", "otters", "frogs", "giraffes"},
+		},
+	}
+
+	actual = question8.GetSchedule("Wednesday")
+	assert.Equal(t, actual, expected)
+
+	expected2 := []string{"Tuesday", "Thursday", "Saturday", "Sunday"}
+	actual = question8.GetSchedule("lions")
+	assert.Equal(t, actual, expected2)
+
+	expected2 = []string{"Tuesday", "Wednesday", "Sunday", "Saturday"}
+	actual = question8.GetSchedule("penguins")
 	assert.Equal(t, actual, expected2)
 
 }
