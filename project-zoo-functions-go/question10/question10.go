@@ -2,7 +2,6 @@ package question10
 
 import (
 	"project-zoo-functions-go/getdata"
-	"sort"
 )
 
 //EmployeeCoverage represents coverage information of the employees.
@@ -22,11 +21,8 @@ func makeEmployeeCoverage(employee getdata.Employee, allSpecies []getdata.Specie
 		for _, vS := range allSpecies {
 			if vS.ID == vRF {
 				species = append(species, vS.Name)
-				sort.Strings(locations)
-				pos := sort.SearchStrings(locations, vS.Location)
-				if pos == len(locations) {
-					locations = append(locations, vS.Location)
-				}
+				locations = append(locations, vS.Location)
+
 			}
 		}
 	}
@@ -47,18 +43,18 @@ func GetEmployeesCoverage(args string) interface{} {
 	for _, v := range data.Employees {
 		employeeCoverage = makeEmployeeCoverage(v, data.Species)
 		if args == "" {
-			result = "Invalid information"
-		} else {
-			if args == v.ID || args == v.FirstName || args == v.LastName {
-				allEmployeesCoverage = append(allEmployeesCoverage, employeeCoverage)
-				break
-			}
+			allEmployeesCoverage = append(allEmployeesCoverage, employeeCoverage)
+		} else if args == v.ID || args == v.FirstName || args == v.LastName {
+			allEmployeesCoverage = append(allEmployeesCoverage, employeeCoverage)
+			break
 		}
+
 	}
-	if args == "" {
-		result = allEmployeesCoverage
-	} else {
-		result = allEmployeesCoverage[0]
+	if len(allEmployeesCoverage) == 0 {
+		return "Invalid information"
+	} else if len(allEmployeesCoverage) == 1 {
+		return employeeCoverage
 	}
+	result = allEmployeesCoverage
 	return result
 }

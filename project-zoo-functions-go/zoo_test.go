@@ -3,6 +3,7 @@ package main
 import (
 	"project-zoo-functions-go/getdata"
 	"project-zoo-functions-go/question1"
+	"project-zoo-functions-go/question10"
 	"project-zoo-functions-go/question2"
 	"project-zoo-functions-go/question3"
 	"project-zoo-functions-go/question4"
@@ -446,4 +447,84 @@ func TestGetOldestFromFirstSpecies(t *testing.T) {
 		actual := question9.GetOldestFromFirstSpecies(test.data[i])
 		assert.Equal(t, actual, test.answer[i])
 	}
+}
+func TestGetEmployeesCoverage(t *testing.T) {
+	expected := []question10.EmployeeCoverage{
+		{
+			ID:        "c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1",
+			FullName:  "Nigel Nelson",
+			Species:   []string{"lions", "tigers"},
+			Locations: []string{"NE", "NW"},
+		},
+		{
+			ID:        "0e7b460e-acf4-4e17-bcb3-ee472265db83",
+			FullName:  "Burl Bethea",
+			Species:   []string{"lions", "tigers", "bears", "penguins"},
+			Locations: []string{"NE", "NW", "NW", "SE"},
+		},
+		{
+			ID:        "fdb2543b-5662-46a7-badc-93d960fdc0a8",
+			FullName:  "Ola Orloff",
+			Species:   []string{"otters", "frogs", "snakes", "elephants"},
+			Locations: []string{"SE", "SW", "SW", "NW"},
+		},
+		{
+			ID:        "56d43ba3-a5a7-40f6-8dd7-cbb05082383f",
+			FullName:  "Wilburn Wishart",
+			Species:   []string{"snakes", "elephants"},
+			Locations: []string{"SW", "NW"},
+		},
+		{
+			ID:        "9e7d4524-363c-416a-8759-8aa7e50c0992",
+			FullName:  "Stephanie Strauss",
+			Species:   []string{"otters", "giraffes"},
+			Locations: []string{"SE", "NE"},
+		},
+		{
+			ID:        "4b40a139-d4dc-4f09-822d-ec25e819a5ad",
+			FullName:  "Sharonda Spry",
+			Species:   []string{"otters", "frogs"},
+			Locations: []string{"SE", "SW"},
+		},
+		{
+			ID:        "c1f50212-35a6-4ecd-8223-f835538526c2",
+			FullName:  "Ardith Azevado",
+			Species:   []string{"tigers", "bears"},
+			Locations: []string{"NW", "NW"},
+		},
+		{
+			ID:        "b0dc644a-5335-489b-8a2c-4e086c7819a2",
+			FullName:  "Emery Elser",
+			Species:   []string{"lions", "bears", "elephants"},
+			Locations: []string{"NE", "NW", "NW"},
+		},
+	}
+	actual := question10.GetEmployeesCoverage("")
+	assert.Equal(t, actual, expected)
+
+	expected2 := question10.EmployeeCoverage{
+		ID:        "4b40a139-d4dc-4f09-822d-ec25e819a5ad",
+		FullName:  "Sharonda Spry",
+		Species:   []string{"otters", "frogs"},
+		Locations: []string{"SE", "SW"},
+	}
+
+	actual2 := question10.GetEmployeesCoverage("Sharonda")
+	assert.Equal(t, actual2, expected2)
+
+	actual2 = question10.GetEmployeesCoverage("Spry")
+	assert.Equal(t, actual2, expected2)
+
+	expected2 = question10.EmployeeCoverage{
+		ID:        "c1f50212-35a6-4ecd-8223-f835538526c2",
+		FullName:  "Ardith Azevado",
+		Species:   []string{"tigers", "bears"},
+		Locations: []string{"NW", "NW"},
+	}
+
+	actual2 = question10.GetEmployeesCoverage("c1f50212-35a6-4ecd-8223-f835538526c2")
+	assert.Equal(t, actual2, expected2)
+
+	actual2 = question10.GetEmployeesCoverage("hkjdfs")
+	assert.Equal(t, actual2, "Invalid information")
 }
